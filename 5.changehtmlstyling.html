@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>change html styling</title>
+        
+        <style>
+            .bluebox{
+                background-color: #4267B2;
+                color: white;
+                height: 100px;
+                width: 300px;
+            }
+            .yellowbox{
+                background-color: rgb(178, 148, 71);
+                height: 100px;
+                width: auto;
+            }
+            .greenbox{
+                background-color: #5fa832;
+                height: 100px;
+                width: auto;
+            }
+            #great{
+               color: #ea23a4;
+            }
+            .sans-serif{
+                font-family: sans-serif;
+            }
+        </style>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <button id="changeFacebook">Change Facebook</button>
+        <button id="changeApple">Change Apple</button>
+        <button id="changeMicrosoft">Change Microsoft</button>
+        <button id="showMicrosoft">Show Microsoft</button>
+        <button id="changeGreat">Change Great</button>
+         <div class="bluebox" id="facebook">
+            <p>Facebook is <span id="great">great.</span></p>  
+        </div>
+        <div class="yellowbox sans-serif" id="apple">
+            <p>Apple.</p>
+        </div>
+        
+        <div class="greenbox" id="microsoft">
+            <p id="microsoftParagraph">Microsoft.</p>
+            <p><a href="http://www.microsoft.com" title="microsoft" id="microsoftLink">Microsoft Link.</a></p>
+        </div>
+        <p>Enter your name:<input></p>
+        <script>
+           $(function(){
+              $("#changeFacebook").click(function(){
+                  $("#facebook").css("width",100*Math.random() -50 + $("#facebook").width());
+               $("#facebook").addClass("greenbox");  
+                  //               window.alert($("#facebook").innerHeight());
+//               window.alert($("#facebook").outerHeight());
+              });
+               
+                 $("#apple").click(function(){
+                 $("#apple").removeClass("sans-serif");
+                 $("#apple").css("position","absolute");
+                 $("#apple").css({'top': Math.random() * 200 , 'left' : Math.random() * 200,
+                                  "background-color" : generateRandColor()  });
+              });
+               $("#changeMicrosoft").click(function(){
+                     $("#microsoft").toggleClass("greenbox");
+                 });
+               $("#microsoft").dblclick(function(){
+                $(this).hide();
+               });
+               $("#showMicrosoft").click(function(){
+                $("#microsoft").show();
+               });
+                $("#changeGreat").click(function(){
+                $("#great").wrap("<div></div>");
+               });
+           });
+            function generateRandColor(){
+                var colors ={};
+                for(i=0;i<3;i++){
+                    colors[i] = Math.floor(Math.random() * 256);
+                }
+                
+                
+                return "rgb(" + colors[0] + ", " + colors[1] + ", " + colors[2] + ")";
+            }
+        </script>
+    </body>
+
+</html>
